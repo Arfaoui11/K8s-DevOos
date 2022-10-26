@@ -90,13 +90,13 @@ pipeline {
             }
         }
 
-             stage("Run the container with ansible"){
+        /*     stage("Run the container with ansible"){
                                       steps {
                                           sh 'ansible-playbook ansible-playbook.yml'
                                              }
-             }
+             }*/
 
-       /*     stage("minikube kubectl version"){
+            stage("minikube kubectl version"){
             steps {
                sh 'minikube kubectl version'
                   }
@@ -112,7 +112,7 @@ pipeline {
            steps {
              sh 'SpringBoot deploy with kubernetes'
                 }
-            }*/
+            }
 /*
         stage('Deploy our image') {
             steps {
