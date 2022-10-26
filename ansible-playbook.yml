@@ -8,8 +8,8 @@
       command: kubectl version
       ignore_errors: yes
     - name: mysql deploy with kubernetes
-      command: kubectl apply -f db-deployment.yaml
+      command: kubectl apply -f /var/lib/jenkins/workspace/DevOps-IOC/db-deployment.yaml
       ignore_errors: yes
     - name: SpringBoot deploy with kubernetes
-      command: kubectl apply -f app-deployment.yaml
+      command: kubectl apply -f /var/lib/jenkins/workspace/DevOps-IOC/app-deployment.yaml
       ignore_errors: yes
