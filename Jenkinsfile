@@ -50,7 +50,7 @@ pipeline {
 */
 pipeline {
     environment {
-        registry = "mahdijr/devops-tp"
+        registry = "mahdijr/devops-project"
         registryCredential = 'a8e9ee1f-1fa3-47e5-bef7-5d65e3d019f4'
         dockerImage = ''
     }
@@ -61,38 +61,51 @@ pipeline {
         stage('Checkout GIT'){
                       steps{
                           echo 'Pulling...';
-                          git branch: 'MahdiBack',
-                          url: 'https://github.com/Arfaoui11/DevOpsProjet.git';
+                          git branch: 'master',
+                          url: 'https://github.com/Arfaoui11/K8s-DevOos.git';
                       }
         }
-        stage("Run the container with ansible"){
+       /* stage("Run the container with ansible"){
                               steps {
                                   sh 'ansible-playbook ansible-playbook.yml'
                                      }
-                         }
+                         }*/
          stage("Build the package"){
                             steps {
                                 sh 'mvn clean package'
 
-                                sh 'docker-compose up -d --build'
+                               // sh 'docker-compose up -d --build'
 
 
                             }
                         }
-        stage("nexus deploy"){
+       /* stage("nexus deploy"){
               steps {
                   sh 'mvn deploy'
                      }
-         }
+         }*/
 
-          /*
+
         stage('Building our image') {
             steps {
                 script {
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                    dockerImage = docker.build registry + ":1.0"
                 }
             }
-        }*/
+        }
+
+
+         stage("mysql deploy with kubernetes"){
+            steps {
+               sh 'kubectl apply -f db-deployment.yaml'
+                  }
+            }
+
+          stage("SpringBoot deploy with kubernetes"){
+           steps {
+             sh 'kubectl apply -f app-deployment.yaml'
+                }
+            }
 /*
         stage('Deploy our image') {
             steps {
@@ -103,7 +116,7 @@ pipeline {
                 }
             }
         }*/
-      stage("Sonar Quality Check"){
+    /*  stage("Sonar Quality Check"){
 		steps{
 		    script{
 		     withSonarQubeEnv(installationName: 'sonar-9', credentialsId: 'jenkins-sonar-token') {
@@ -122,19 +135,19 @@ pipeline {
             }
         }
 
+*/
 
 
-/*
 
         stage('Cleaning up') {
 
             steps {
 
-                sh "docker rmi $registry:$BUILD_NUMBER"
+                sh "docker rmi $registry:1.0"
 
             }
 
-        }*/
+        }
 
     }
 
