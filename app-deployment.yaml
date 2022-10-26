@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       app: springboot-k8s-mysql
-  replicas: 2
+  replicas: 3
   template:
     metadata:
       labels:
@@ -15,9 +15,6 @@ spec:
       containers:
         - name: springboot-crud-k8s
           image: devops-projet:1.0
-          auth:
-            username: mahdijr
-            password: M27773051@a
           ports:
             - containerPort: 8080
           env:   # Setting Enviornmental Variables
