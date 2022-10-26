@@ -93,7 +93,16 @@ pipeline {
                 }
             }
         }
-
+         stage("kubectl version"){
+            steps {
+               sh 'minikube kubectl version'
+                  }
+            }
+            stage("minikube kubectl version"){
+            steps {
+               sh 'minikube kubectl version'
+                  }
+            }
 
          stage("mysql deploy with kubernetes"){
             steps {
