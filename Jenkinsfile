@@ -93,11 +93,7 @@ pipeline {
                 }
             }
         }
-         stage("kubectl version"){
-            steps {
-               sh 'kubectl version'
-                  }
-            }
+
             stage("minikube kubectl version"){
             steps {
                sh 'minikube kubectl version'
