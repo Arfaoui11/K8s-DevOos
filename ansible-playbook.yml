@@ -11,5 +11,5 @@
       command: kubectl apply -f db-deployment.yaml
       ignore_errors: yes
     - name: SpringBoot deploy with kubernetes
-      command: SpringBoot deploy with kubernetes
+      command: kubectl apply -f app-deployment.yaml
       ignore_errors: yes
