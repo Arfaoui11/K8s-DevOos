@@ -1,15 +1,18 @@
-version: '3'
-
+version: "3"
 services:
   portainer:
     image: portainer/portainer-ce:latest
     container_name: portainer
-    restart: unless-stopped
-    security_opt:
-      - no-new-privileges:true
+    hostname: portainer
+    network_mode: bridge
+    environment:
+      - PUID=1000
+      - PGID=100
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
     volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ./portainer-data:/data
+      - /volume1/docker/portainer/data:/data
+      - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - 9000:9000
+    restart: always
