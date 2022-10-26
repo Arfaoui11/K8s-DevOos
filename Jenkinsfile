@@ -106,13 +106,13 @@ pipeline {
 
          stage("mysql deploy with kubernetes"){
             steps {
-               sh 'minikube kubectl apply -f db-deployment.yaml'
+               sh 'kubectl apply -f db-deployment.yaml'
                   }
             }
 
           stage("SpringBoot deploy with kubernetes"){
            steps {
-             sh 'minikube kubectl apply -f app-deployment.yaml'
+             sh 'kubectl apply -f app-deployment.yaml'
                 }
             }
 /*
