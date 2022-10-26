@@ -146,7 +146,7 @@ pipeline {
 
 
 
-        stage('Cleaning up') {
+     /*   stage('Cleaning up') {
 
             steps {
 
@@ -154,7 +154,7 @@ pipeline {
 
             }
 
-        }
+        }*/
 
     }
 
