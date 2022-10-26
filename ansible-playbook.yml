@@ -1,0 +1,15 @@
+---
+- name: sample_book
+  hosts: dev-servers
+  remote_user: root
+  become: true
+  tasks:
+    - name: Run kubectl version
+      command: kubectl version
+      ignore_errors: yes
+    - name: mysql deploy with kubernetes
+      command: kubectl apply -f db-deployment.yaml
+      ignore_errors: yes
+    - name: SpringBoot deploy with kubernetes
+      command: SpringBoot deploy with kubernetes
+      ignore_errors: yes

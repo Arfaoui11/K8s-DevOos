@@ -65,11 +65,7 @@ pipeline {
                           url: 'https://github.com/Arfaoui11/K8s-DevOos.git';
                       }
         }
-       /* stage("Run the container with ansible"){
-                              steps {
-                                  sh 'ansible-playbook ansible-playbook.yml'
-                                     }
-                         }*/
+
          stage("Build the package"){
                             steps {
                                 sh 'mvn clean package'
@@ -94,7 +90,13 @@ pipeline {
             }
         }
 
-            stage("minikube kubectl version"){
+             stage("Run the container with ansible"){
+                                      steps {
+                                          sh 'ansible-playbook ansible-playbook.yml'
+                                             }
+             }
+
+       /*     stage("minikube kubectl version"){
             steps {
                sh 'minikube kubectl version'
                   }
@@ -108,9 +110,9 @@ pipeline {
 
           stage("SpringBoot deploy with kubernetes"){
            steps {
-             sh 'kubectl apply -f app-deployment.yaml'
+             sh 'SpringBoot deploy with kubernetes'
                 }
-            }
+            }*/
 /*
         stage('Deploy our image') {
             steps {
