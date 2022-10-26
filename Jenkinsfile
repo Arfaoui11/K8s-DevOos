@@ -88,7 +88,9 @@ pipeline {
 
         stage('Building our image') {
             steps {
-                 sh 'docker build -t mahdijr/devops-projet:1.0 .'
+                script {
+                    dockerImage = docker.build registry + ":1.0"
+                }
             }
         }
 
